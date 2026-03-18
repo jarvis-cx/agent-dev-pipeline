@@ -28,7 +28,12 @@ This skill is installed at `~/.openclaw/skills/coding-pipeline/SKILL.md` and ref
 - [ProtoWeave](https://protoweave.ai) — AI-powered business validation
 - [TripTrust](https://triptrust.co) — AI travel safety reports
 
+## Credits
+
+This pipeline was originally based on [openclaw-coding-pipeline](https://github.com/Clintos11/openclaw-coding-pipeline) by [@Clintos11](https://github.com/Clintos11). We extended it with a 4-layer methodology framework (Branch-PR-CI, TDD-Lite, Scope Locking, Preview Deployments) tailored for AI agent-driven development.
+
 ## Related
 
+- [openclaw-coding-pipeline](https://github.com/Clintos11/openclaw-coding-pipeline) — Original pipeline this was forked from
 - [openclaw-cipher](https://github.com/jarvis-cx/openclaw-cipher) — Cipher agent config/memory
 - [OpenClaw](https://openclaw.ai) — The agent platform
