@@ -95,3 +95,10 @@
   - No failures observed in applicable validation.
   - Existing untracked `specs/` directory is pre-existing/expected pipeline context, not introduced by this test stage.
 - TEST conclusion: PASS.
+
+## PR
+
+- Branch: `docs/worker-coordination-model`
+- PR: https://github.com/jarvis-cx/agent-dev-pipeline/pull/1
+- Title: `docs: add worker coordination model note`
+- Status: opened successfully
