@@ -53,6 +53,7 @@ PLAN → SETUP → IMPLEMENT ←──┐
 - **`mode: "session"` is non-negotiable** for orchestrators. `mode: "run"` dies mid-pipeline.
 - **Never implement code as the orchestrator.** Only orchestrate.
 - **Fresh context per child** is a feature — the progress file is the handoff contract.
+- **Workers do not coordinate with each other directly.** The orchestrator is the sole coordinator, and the progress file is the only cross-stage handoff mechanism.
 - **Always push to feature branches** and create PRs — never merge to main locally.
 - **Repo-agnostic** — agents discover build commands, test commands, and conventions from the repo itself.
 

@@ -129,6 +129,9 @@ The orchestrator runs as a **persistent session** (`mode: "session"`). It spawns
 - NEVER spawn multiple stages in one turn
 - NEVER implement code yourself — only orchestrate
 - ONE stage per turn → yield → receive result → next stage
+- Worker agents do not coordinate with each other directly
+- The orchestrator is the sole coordinator across stages and retries
+- The progress file is the only handoff contract between worker stages
 
 ## Progress File
 
