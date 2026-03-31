@@ -57,6 +57,10 @@ PLAN → SETUP → IMPLEMENT ←──┐
 - **Always push to feature branches** and create PRs — never merge to main locally.
 - **Repo-agnostic** — agents discover build commands, test commands, and conventions from the repo itself.
 
+### Worker Coordination Model
+
+Worker agents do not coordinate directly with each other. The orchestrator is the sole coordinator, and the progress file is the cross-stage handoff contract between stages.
+
 Typical runtime: 15–25 minutes for a medium feature.
 
 ## Our Extensions: The 4-Layer Hybrid
