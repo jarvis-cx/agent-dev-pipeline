@@ -66,3 +66,32 @@
   - the orchestrator is the sole coordinator
   - the progress file is the cross-stage handoff contract
 - No unrelated repo files, config, specs, or code paths were modified.
+
+## VERIFY
+
+- Diff check against `main` passed: `git diff --name-status main -- README.md progress/docs-worker-coordination-model.md` shows only `README.md` modified and `progress/docs-worker-coordination-model.md` added for stage coordination. `git status --short` shows only this progress file currently modified for the VERIFY note plus the expected untracked `specs/` directory from the pipeline run.
+- README content check passed: the `Worker Coordination Model` section explicitly states all three required spec points:
+  - worker agents do not coordinate directly with each other
+  - the orchestrator is the sole coordinator
+  - the progress file is the cross-stage handoff contract
+- Heading/title check passed against the spec: the README contains exactly one `Worker Coordination Model` section title. It is implemented as a `###` heading, which is structurally consistent with the surrounding README hierarchy.
+- Build/test applicability: none. Live repo scan found no relevant build/test entrypoints (`package.json`, `Makefile`, `justfile`, `pytest.ini`, `tox.ini`, `Cargo.toml`, `go.mod`, `Gemfile` absent), and this is a tiny docs-only change.
+- Conclusion: PASS.
+
+## TEST
+
+- Applicable validation for this stage is lightweight documentation verification only. This repo does not expose a runnable automated test or integration harness relevant to a README-only change, so no code/test framework execution was applicable.
+- Ran narrow branch checks:
+  - `git diff --stat main -- README.md progress/docs-worker-coordination-model.md`
+  - `git diff --name-status main -- README.md progress/docs-worker-coordination-model.md`
+  - `git status --short`
+  - `rg -n '^###? Worker Coordination Model$' README.md`
+  - `rg -n 'do not coordinate directly with each other|sole coordinator|cross-stage handoff contract' README.md`
+- Results:
+  - Scope check passed: only `README.md` is the product-file change, with this progress file carrying stage coordination notes.
+  - Content check passed: README contains exactly one `Worker Coordination Model` heading and the required coordination text.
+  - No branch-introduced test/integration issue found.
+- Issue classification:
+  - No failures observed in applicable validation.
+  - Existing untracked `specs/` directory is pre-existing/expected pipeline context, not introduced by this test stage.
+- TEST conclusion: PASS.
