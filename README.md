@@ -53,7 +53,6 @@ PLAN → SETUP → IMPLEMENT ←──┐
 - **`mode: "session"` is non-negotiable** for orchestrators. `mode: "run"` dies mid-pipeline.
 - **Never implement code as the orchestrator.** Only orchestrate.
 - **Fresh context per child** is a feature — the progress file is the handoff contract.
-- **Workers do not coordinate with each other directly.** The orchestrator is the sole coordinator, and the progress file is the only cross-stage handoff mechanism.
 - **Always push to feature branches** and create PRs — never merge to main locally.
 - **Repo-agnostic** — agents discover build commands, test commands, and conventions from the repo itself.
 
@@ -65,6 +64,12 @@ Typical runtime: 15–25 minutes for a medium feature.
 2. **TDD-Lite** — Write/run tests before claiming success. Build passing ≠ working.
 3. **Scope Locking** — Agents declare which files they'll touch upfront. No collateral damage.
 4. **Preview Deployments** — Visual verification on preview URLs before merging to production.
+
+### Architecture Enhancements
+
+In our deployment, `coding-orchestrator` owns the existing main workspace while each `feature-dev-*` worker runs in its own dedicated workspace with its own bootstrap files (`AGENTS.md`, `SOUL.md`, and related workspace context).
+
+Workers do not coordinate directly with each other. The orchestrator is the sole coordinator, and the progress file is the cross-stage handoff contract between stages. This isolation model reduces drift, keeps worker identities role-specific, and makes retries/debugging more deterministic.
 
 ## Usage
 
