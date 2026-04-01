@@ -82,7 +82,7 @@ This skill is installed at `~/.openclaw/skills/coding-pipeline/SKILL.md` and ref
 
 ## Credits
 
-This pipeline was originally based on [openclaw-coding-pipeline](https://github.com/Clintos11/openclaw-coding-pipeline) by [@Clintos11](https://github.com/Clintos11). We extended it with a 4-layer methodology framework (Branch-PR-CI, TDD-Lite, Scope Locking, Preview Deployments) tailored for AI agent-driven development.
+This pipeline was originally based on [openclaw-coding-pipeline](https://github.com/Clintos11/openclaw-coding-pipeline) by [@Clintos11](https://github.com/Clintos11). We extended it with a 4-layer methodology framework (Branch-PR-CI, TDD-Lite, Scope Locking, Preview Deployments) tailored for AI agent-driven development, plus architecture enhancements for isolated worker workspaces, per-agent bootstrap files, and explicit orchestrator-mediated handoff through the progress file.
 
 ## Related
 
