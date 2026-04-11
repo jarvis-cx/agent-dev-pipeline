@@ -58,12 +58,13 @@ PLAN → SETUP → IMPLEMENT ←──┐
 
 Typical runtime: 15–25 minutes for a medium feature.
 
-## Our Extensions: The 4-Layer Hybrid
+## Our Extensions: The 5-Layer Hybrid
 
 1. **Branch-PR-CI** — No direct-to-main commits. All changes go through PRs with CI gates.
 2. **TDD-Lite** — Write/run tests before claiming success. Build passing ≠ working.
 3. **Scope Locking** — Agents declare which files they'll touch upfront. No collateral damage.
 4. **Preview Deployments** — Visual verification on preview URLs before merging to production.
+5. **Deterministic Production Control** — Never use non-deterministic production workflow control. LLMs may generate content, but queue polling, claims, retries, recovery, state transitions, and publish/finalization must be deterministic.
 
 ### Architecture Enhancements
 

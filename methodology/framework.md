@@ -121,6 +121,25 @@ These files must never be modified without explicit approval:
 
 ---
 
+## Layer 5: Deterministic Production Control
+
+### Hard rule
+- **Never use non-deterministic production design/flows again**
+- LLMs may generate content, analysis, classifications, and structured outputs
+- LLMs must NOT be the sole controller of queue polling, claiming, retries, recovery, finalization, publish steps, or exactly-once workflow behavior
+
+### Rules
+- Production workflow state transitions must be deterministic and code-controlled
+- Queue polling, locks, stale recovery, retries, and completion writes belong in deterministic code/scripts/services
+- LLMs belong inside a deterministic envelope, not as the workflow engine itself
+- Every production workflow must fail closed and expose bounded recovery behavior
+- One live execution path only, no conflicting crons/prompts/scripts
+
+### Agent enforcement
+- If a proposed production design puts workflow control inside prompts or agent discretion, reject it and redesign the orchestration layer deterministically
+- Specs must identify which parts are deterministic control logic vs LLM generation logic
+- Any stateful production workflow must document lock/claim semantics, retry bounds, and terminal failure behavior before implementation
+
 ## Summary
 
 The framework is designed to be **lightweight enough that agents can follow it** but **strict enough to prevent the regressions** we've been experiencing. It's not bureaucracy — it's guardrails.

@@ -9,12 +9,13 @@ Multi-stage sub-agent pipeline for building features on any repo. The orchestrat
 
 ## Methodology
 
-This pipeline enforces a **4-layer hybrid framework** (see `methodology/framework.md`):
+This pipeline enforces a **5-layer hybrid framework** (see `methodology/framework.md`):
 
 1. **Branch-PR-CI** — No direct-to-main. All changes via feature branches + PRs with CI gates.
 2. **TDD-Lite** — Reproduce before fixing. Verify before claiming success. Visual checks for UI.
 3. **Scope Locking** — Declare files upfront. `git add <specific files>` only. Never `git add -A`.
 4. **Preview Deployments** — Verify Vercel preview URL visually for UI changes before merging.
+5. **Deterministic Production Control** — Never let prompts/agents be the sole controller of production workflow state. Queueing, retries, recovery, and finalization must be deterministic.
 
 **Attempt budget:** Max 2 retries per fix. If 2 retries fail → stop and report. Do not keep guessing.
 
